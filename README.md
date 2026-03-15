@@ -4,29 +4,6 @@ Sentiment analysis on the [Twitter US Airline Sentiment](https://www.kaggle.com/
 
 ---
 
-## Project Structure
-```
-airline-tweet-sentiment-ann/
-│
-├── data/
-│   └── Tweets.csv
-│
-├── notebooks/
-│   └── DL_NLP_exercise_1.ipynb
-│
-├── outputs/
-│   ├── figures/
-│   │   ├── sentiment_distribution.png
-│   │   ├── training_loss_curve.png
-│   │   └── confusion_matrix.png
-│   └── results/
-│       └── classification_report.txt
-│
-├── requirements.txt
-└── README.md
-```
-
----
 
 ## Pipeline
 
@@ -42,13 +19,15 @@ airline-tweet-sentiment-ann/
 
 ## Results
 
-| Method | Accuracy | Negative F1 | Neutral F1 | Positive F1 | Macro F1 |
-|--------|----------|-------------|------------|-------------|----------|
-| TF-IDF | **79.34%** | **0.86** | **0.63** | **0.73** | **0.74** |
-| Word2Vec | 68.47% | 0.71 | 0.48 | 0.52 | 0.57 |
-| FastText | 61.29% | — | — | — | — |
+| Method | Accuracy | Negative F1 | Neutral F1 | Positive F1 | Macro F1 | Epochs |
+|--------|----------|-------------|------------|-------------|----------|--------|
+| TF-IDF | **79.34%** | **0.87** | **0.62** | **0.74** | **0.74** | 8 |
+| Word2Vec | 68.47% | 0.78 | 0.49 | 0.62 | 0.63 | 57 |
+| FastText | 61.29% | 0.71 | 0.48 | 0.52 | 0.57 | 26 |
 
-TF-IDF outperformed both embedding methods. Word2Vec and FastText were trained from scratch on ~14k tweets — too small a corpus to learn competitive embeddings, leading to severe overfitting.
+**TF-IDF is the clear winner**, outperforming Word2Vec by +11% and FastText by +18%. Word2Vec and FastText were trained from scratch on ~14k tweets — too small a corpus to learn competitive embeddings, resulting in noisy and unstable validation performance across epochs.
+
+Notable: the TF-IDF best model was saved at **epoch 1** (val loss: 0.6950). After that, training loss dropped to near zero while validation loss kept rising — a sign of severe overfitting on the sparse high-dimensional features.
 
 ---
 
