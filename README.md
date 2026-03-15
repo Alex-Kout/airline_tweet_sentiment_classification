@@ -1,6 +1,6 @@
 # Airline Tweet Sentiment Classification with ANN
 
-Sentiment analysis on the [Twitter US Airline Sentiment](https://www.kaggle.com/datasets/crowdflower/twitter-airline-sentiment) dataset using a feedforward Artificial Neural Network (ANN) built with PyTorch. Three vectorisation methods were compared: TF-IDF, Word2Vec and FastText.
+Sentiment analysis on the [Twitter US Airline Sentiment](https://www.kaggle.com/datasets/crowdflower/twitter-airline-sentiment) dataset using a Artificial Neural Network (ANN) built with PyTorch. Three vectorisation methods were compared: TF-IDF, Word2Vec and FastText.
 
 ---
 
@@ -80,10 +80,4 @@ jupyter notebook notebooks/DL_NLP_exercise_1.ipynb
 | Neutral | 3,099 | 21% |
 | Positive | 2,363 | 16% |
 
----
 
-## Further Improvements
-
-- Load **pretrained embeddings** (Google News Word2Vec, Twitter FastText) to avoid small-corpus overfitting
-- Apply **SMOTE** oversampling on minority classes
-- Fine-tune **DistilBERT / RoBERTa** for state-of-the-art accuracy (expected 85–90%+)
